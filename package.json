@@ -1,0 +1,95 @@
+{
+  "publisher": "he110te4m",
+  "name": "vscode-update-anything",
+  "displayName": "Update Anything",
+  "version": "0.0.1",
+  "description": "a vscode can replace anything when file save",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/He110te4m/vscode-circular-dependency"
+  },
+  "categories": [
+    "Debuggers",
+    "Linters",
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "icon": "icons/logo.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "activationEvents": [
+    "workspaceContains:**/*"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "vscode-update-anything",
+      "properties": {
+        "vscode-update-anything.enabledFiles": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Which files to update.\nlike ['.*\\.ts', '.*\\.js']"
+        },
+        "vscode-update-anything.replacements": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "object",
+            "properties": {
+              "find": {
+                "type": "string",
+                "description": "Support regex"
+              },
+              "replace": {
+                "type": "string",
+                "description": "Support vscode snippet date variables"
+              }
+            }
+          },
+          "description": "What to replace.\nlike [{find: 'old', replace: 'new'}]"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "vsce": {
+    "dependencies": false,
+    "yarn": false
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.12.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.23.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2"
+  }
+}

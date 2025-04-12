@@ -122,18 +122,21 @@ function formatReplacements(text: string, replacements: Record<string, string>) 
 }
 
 function getReplacements() {
+  const year = dayjs().year().toString()
+  const month = (dayjs().month() + 1).toString()
+  const day = dayjs().day().toString()
+  const hour = dayjs().hour().toString()
+  const minute = dayjs().minute().toString()
+  const second = dayjs().second().toString()
+
   return {
-    $CURRENT_YEAR: dayjs().year().toString(),
-    $CURRENT_YEAR_SHORT: dayjs().year().toString().slice(-2),
-    $CURRENT_MONTH: dayjs().month().toString().padStart(2, '0'),
-    $CURRENT_MONTH_NAME: dayjs().month().toString(),
-    $CURRENT_MONTH_NAME_SHORT: dayjs().month().toString(),
-    $CURRENT_DATE: dayjs().date().toString().padStart(2, '0'),
-    $CURRENT_DAY_NAME: dayjs().day().toString(),
-    $CURRENT_DAY_NAME_SHORT: dayjs().day().toString(),
-    $CURRENT_HOUR: dayjs().hour().toString().padStart(2, '0'),
-    $CURRENT_MINUTE: dayjs().minute().toString().padStart(2, '0'),
-    $CURRENT_SECOND: dayjs().second().toString().padStart(2, '0'),
+    $CURRENT_YEAR: year,
+    $CURRENT_YEAR_SHORT: year.slice(-2),
+    $CURRENT_MONTH: month.padStart(2, '0'),
+    $CURRENT_DATE: day.padStart(2, '0'),
+    $CURRENT_HOUR: hour.padStart(2, '0'),
+    $CURRENT_MINUTE: minute.padStart(2, '0'),
+    $CURRENT_SECOND: second.padStart(2, '0'),
     $CURRENT_SECONDS_UNIX: dayjs().unix().toString(),
     $CURRENT_TIMEZONE_OFFSET: dayjs().utcOffset().toString(),
   }

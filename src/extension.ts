@@ -34,7 +34,7 @@ export function activate(context: ExtensionContext) {
 
   const disposable = workspace.onWillSaveTextDocument((event) => {
     // 如果文件不匹配，则不进行更新
-    if (!enabledFiles?.length || !replacements?.length || !enabledFiles.some(rule => rule.test(event.document.uri.fsPath))) {
+    if (!enabledFiles?.length || !replacements?.length || !enabledFiles.some(rule => rule.test(event.document.uri.fsPath)) || !event.document.isDirty) {
       return
     }
 

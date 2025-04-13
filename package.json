@@ -2,7 +2,7 @@
   "publisher": "he110te4m",
   "name": "vscode-update-anything",
   "displayName": "Update Anything",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a vscode can replace anything when file save",
   "license": "MIT",
   "repository": {

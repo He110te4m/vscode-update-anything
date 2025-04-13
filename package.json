@@ -68,7 +68,8 @@
     "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "release": "bumpp && vsce publish"
   },
   "vsce": {
     "dependencies": false,

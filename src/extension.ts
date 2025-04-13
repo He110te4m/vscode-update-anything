@@ -124,7 +124,7 @@ function formatReplacements(text: string, replacements: Record<string, string>) 
 function getReplacements() {
   const year = dayjs().year().toString()
   const month = (dayjs().month() + 1).toString()
-  const day = dayjs().day().toString()
+  const day = dayjs().date().toString()
   const hour = dayjs().hour().toString()
   const minute = dayjs().minute().toString()
   const second = dayjs().second().toString()
